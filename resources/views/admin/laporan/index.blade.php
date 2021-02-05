@@ -3,11 +3,6 @@
 @section('content')
 
 <div class="container">
-    @if(session('message'))
-            <div class="alert alert-success" role="alert">
-                {{ session('message')}}
-            </div>
-        @endif
     <div class="card">
         <div class="card-header bg-primary">
             Form Laporan Korban
@@ -22,6 +17,7 @@
                 <thead>
                     <tr>
                         <th width="10px">No</th>
+                        <th><center>Lokasi Korban</center></th>
                         <th>Rw</th>
                         <th>Jumlah Positif</th>
                         <th>Jumlah Sembuh</th>
@@ -35,10 +31,16 @@
                     @foreach($laporan as $data)
                     <tr>
                         <td>{{$no++}}</td>
-                        <td>{{$data->nama}}</td>
-                        <td>{{$data->jumlah_positif}}</td>
-                        <td>{{$data->jumlah_sembuh}}</td>
-                        <td>{{$data->jumlah_meninggal}}</td>
+                        <td>
+                            KELURAHAN : {{ $data->rw->kelurahan->nama_kelurahan }} <br>
+                            KECAMATAN : {{ $data->rw->kelurahan->kecamatan->nama_kecamatan }} <br>
+                            KOTA : {{ $data->rw->kelurahan->kecamatan->kota->nama_kota }} <br>
+                            PROVINSI : {{ $data->rw->kelurahan->kecamatan->kota->provinsi->nama_provinsi }}
+                        </td>
+                        <td>{{$data->rw->nama}}</td>
+                        <td>{{$data->jumlah_positif}} Orang</td>
+                        <td>{{$data->jumlah_sembuh}} Orang</td>
+                        <td>{{$data->jumlah_meninggal}} Orang</td>
                         <td>{{$data->tanggal}}</td>
                         <td style="text-align: center;">
                             <form action="{{route('laporan.destroy',$data->id)}}" method="POST">

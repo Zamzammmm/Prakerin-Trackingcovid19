@@ -3,11 +3,6 @@
 @section('content')
 
 <div class="container">
-    @if(session('message'))
-            <div class="alert alert-success" role="alert">
-                {{ session('message')}}
-            </div>
-        @endif
     <div class="card">
         <div class="card-header bg-primary">
             Form Rw

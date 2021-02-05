@@ -12,10 +12,10 @@ class Rw extends Model
     protected $table = "rws";
 
     public function kelurahan(){
-        return $this->belongsTo(Kelurahan::class);
+        return $this->belongsTo(Kelurahan::class,'id_kelurahan');
     }
 
-    public function kasus2(){
-        return $this->hasMany(Rw::class);
+    public function laporan(){
+        return $this->hasMany(Rw::class,'id_rw');
     }
 }

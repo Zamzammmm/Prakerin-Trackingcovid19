@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="id_kelurahan">Nama Kelurahan</label>
-                        <select name="id_kelurahan" id="id_kelurahan" class="form-control" required>
+                        <select name="id_kelurahan" id="id_kelurahan" class="form-control">
                             @foreach ($kelurahan as $data)
                             <option value="{{$data->id}}">{{$data->nama_kelurahan}}</option> 
                             @endforeach
@@ -20,7 +20,10 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="nama" class="control-label">Rw</label>
-                        <input type="text" name="nama" id="nama" class="form-control" required>
+                        <input type="text" name="nama" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama')}}" autofocus>
+                        @error('nama')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">

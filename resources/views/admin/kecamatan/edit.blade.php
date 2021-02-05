@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="nama_kota">Nama Kota</label>
-                            <select name="id_kota" class="form-control" required>
+                            <select name="id_kota" class="form-control">
                                 <option disabled>-- Pilih Kota --</option>
                                 @foreach ($kota as $data)
                                     @php $select = '' ;@endphp 

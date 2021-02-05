@@ -84,3 +84,8 @@ Route::get('/laporan/edit/{id}',[LaporanController::class, 'edit'])->name('lapor
 Route::get('/laporan/show/{id}',[LaporanController::class, 'show'])->name('laporan.show');
 Route::post('/laporan/update/{id}',[LaporanController::class, 'update'])->name('laporan.update');
 Route::post('/laporan/destroy/{id}',[LaporanController::class,'destroy'])->name('laporan.destroy');
+
+Route::get('/get_kota/{id}',[LaporanController::class,'get_kota']);
+Route::get('/get_kecamatan/{id}',[LaporanController::class,'get_kecamatan']);
+Route::get('/get_kelurahan/{id}',[LaporanController::class,'get_kelurahan']);
+Route::get('/get_rw/{id}',[LaporanController::class,'get_rw']);

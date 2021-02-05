@@ -12,11 +12,17 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="kode_provinsi" class="control-label">Kode Provinsi</label>
-                        <input type="text" name="kode_provinsi" id="kode_provinsi" class="form-control" required>
+                    <input type="text" name="kode_provinsi" id="kode_provinsi" class="form-control @error('kode_provinsi') is-invalid @enderror" value="{{ old('kode_provinsi')}}" autofocus>
+                        @error('kode_provinsi')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="nama_provinsi" class="control-label">Nama Provinsi</label>
-                        <input type="text" name="nama_provinsi" id="nama_provinsi" class="form-control" required>
+                        <input type="text" name="nama_provinsi" id="nama_provinsi" class="form-control @error('nama_provinsi') is-invalid @enderror" value="{{ old('nama_provinsi')}}">
+                        @error('nama_provinsi')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">

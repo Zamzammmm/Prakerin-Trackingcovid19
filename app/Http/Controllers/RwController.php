@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Rw;
 use App\Models\Kelurahan;
@@ -28,12 +29,20 @@ class RwController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nama' => 'required|numeric|unique:rws',
+        ], [
+            'nama.required' => 'Nama Rw tidak boleh kosong',
+            'nama.numeric' => 'Kode Provinsi tidak boleh menggunakan huruf abjad.',
+            'nama.unique' => 'Nama Rw sudah terdaftar'
+    ]);
+
         $rw = new Rw();
         $rw->nama = $request->nama;
         $rw->id_kelurahan = $request->id_kelurahan;
         $rw->save();
-        return redirect()->route('rw')
-                ->with(['message'=>'Data Rw Berhasil Di Buat']);
+        Alert::success('Sukses', 'Data Berhasil Disimpan', 'Success');
+        return redirect()->route('rw');
     }
 
     public function show($id)
@@ -51,19 +60,26 @@ class RwController extends Controller
 
     public function update($id,Request $request)
     {
+        $request->validate([
+            'nama' => 'required|numeric',
+        ],[
+            'nama.required' => 'Nama Rw tidak boleh kosong',
+            'nama.numeric' => 'Kode Provinsi tidak boleh menggunakan huruf abjad.',
+    ]);
+
         // dd($request->all());
         $rw = Rw::findOrFail($id);
         $rw->nama = $request->nama;
         $rw->id_kelurahan = $request->id_kelurahan;
         $rw->save();
-        return redirect()->route('rw')
-                ->with(['message'=>'Data Rw Berhasil Di Edit']);
+        Alert::success('Sukses', 'Data Berhasil Diedit', 'Success');
+        return redirect()->route('rw');
     }
 
     public function destroy($id)
     {
         $rw = Rw::findOrFail($id)->delete();
-        return redirect('rw')
-                ->with(['message'=>'Data Rw Berhasil Di Hapus']);
+        Alert::success('Sukses', 'Data Berhasil Dihapus', 'Success');
+        return redirect('rw');
     }
 }

@@ -25,7 +25,9 @@
   <link rel="stylesheet" href="{{asset('assets/plugins/daterangepicker/daterangepicker.css')}}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
-  <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatable.min.css')}}">
+  <!-- DataTables -->
+  {{-- <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatable.min.css')}}"> --}}
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -158,7 +160,7 @@
               <li class="nav-item">
                 <a href="{{route('laporan')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Tracking</p>
+                  <p>Laporan</p>
                 </a>
               </li>
             </ul>
@@ -233,6 +235,7 @@
 <script>
   $.widget.bridge('uibutton', $.ui.button)
 </script>
+@include('sweetalert::alert')
 <!-- Bootstrap 4 -->
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- ChartJS -->
@@ -259,7 +262,9 @@
 <script src="{{asset('assets/dist/js/demo.js')}}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{asset('assets/dist/js/pages/dashboard.js')}}"></script>
-<script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}" ></script>
+<!-- DataTables -->
+{{-- <script src="{{asset('assets/plugins/datatables/jquery.dataTables.min.js')}}" ></script> --}}
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
 @yield('js')
     <!-- Page specific script -->
     <script>

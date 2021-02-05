@@ -12,10 +12,10 @@ class Kelurahan extends Model
     protected $table = "kelurahans";
 
     public function kecamatan(){
-        return $this->belongsTo(Kecamatan::class);
+        return $this->belongsTo(Kecamatan::class,'id_kecamatan');
     }
 
     public function rw(){
-        return $this->hasMany(Rw::class);
+        return $this->hasMany(Rw::class,'id_rw');
     }
 }

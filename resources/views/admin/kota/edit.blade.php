@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="nama_provinsi">Nama Provinsi</label>
-                            <select name="id_provinsi" class="form-control" required>
+                            <select name="id_provinsi" class="form-control">
                                 <option disabled>-- Pilih Provinsi --</option>
                                 @foreach ($provinsi as $data)
                                     @php $select = '' ;@endphp 
@@ -25,11 +25,17 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="kode_kota" class="control-label">Kode Kota</label>
-                        <input type="text" name="kode_kota" id="kode_kota" value="{{$kota->kode_kota}}" class="form-control" required>
+                        <input type="text" name="kode_kota" id="kode_kota" value="{{$kota->kode_kota}}" class="form-control class="form-control @error('kode_kota') is-invalid @enderror" value="{{ old('kode_kota')}}" autofocus>
+                        @error('kode_kota')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="nama_kota" class="control-label">Nama Kota</label>
-                        <input type="text" name="nama_kota" id="nama_kota" value="{{$kota->nama_kota}}" class="form-control" required>
+                        <input type="text" name="nama_kota" id="nama_kota" value="{{$kota->nama_kota}}" class="form-control class="form-control @error('nama_kota') is-invalid @enderror" value="{{ old('nama_kota')}}">
+                        @error('nama_kota')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">

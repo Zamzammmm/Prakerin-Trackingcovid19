@@ -12,10 +12,10 @@ class Kota extends Model
     protected $table = "kotas";
 
     public function provinsi(){
-        return $this->belongsTo(Provinsi::class);
+        return $this->belongsTo(Provinsi::class,'id_provinsi');
     }
 
     public function kecamatan(){
-        return $this->hasMany(Kecamatan::class);
+        return $this->hasMany(Kecamatan::class,'id_kecamatan');
     }
 }

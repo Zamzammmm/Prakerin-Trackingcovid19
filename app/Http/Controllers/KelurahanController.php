@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use App\Models\Kelurahan;
 use App\Models\Kecamatan;
@@ -28,12 +29,22 @@ class KelurahanController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nama_kelurahan' => 'required|regex:/^[a-z A-Z]+$/u|min:4|max:28|unique:kelurahans',
+        ], [
+            'nama_kelurahan.required' => 'Nama Kelurahan tidak boleh kosong',
+            'nama_kelurahan.regex' => 'Nama Kelurahan tidak boleh menggunakan angka.',
+            'nama_kelurahan.min' => 'Kode Minimal 4 karakter',
+            'nama_kelurahan.max' => 'Kode maximal 28 karakter',
+            'nama_kelurahan.unique' => 'Nama Kelurahan sudah terdaftar'
+    ]);
+
         $kelurahan = new Kelurahan();
         $kelurahan->nama_kelurahan = $request->nama_kelurahan;
         $kelurahan->id_kecamatan = $request->id_kecamatan;
         $kelurahan->save();
-        return redirect()->route('kelurahan')
-                ->with(['message'=>'Data Kelurahan Berhasil Di Buat']);
+        Alert::success('Sukses', 'Data Berhasil Disimpan', 'Success');
+        return redirect()->route('kelurahan');
     }
 
     public function show($id)
@@ -51,19 +62,28 @@ class KelurahanController extends Controller
 
     public function update($id,Request $request)
     {
+        $request->validate([
+            'nama_kelurahan' => 'required|regex:/^[a-z A-Z]+$/u|min:4|max:28',
+        ],[
+            'nama_kelurahan.required' => 'Nama Kelurahan tidak boleh kosong',
+            'nama_kelurahan.regex' => 'Nama Kelurahan tidak boleh menggunakan angka.',
+            'nama_kelurahan.min' => 'Kode Minimal 4 karakter',
+            'nama_kelurahan.max' => 'Kode Maximal 28 karakter',
+    ]);
+
         // dd($request->all());
         $kelurahan = Kelurahan::findOrFail($id);
         $kelurahan->nama_kelurahan = $request->nama_kelurahan;
         $kelurahan->id_kecamatan = $request->id_kecamatan;
         $kelurahan->save();
-        return redirect()->route('kelurahan')
-                ->with(['message'=>'Data Kelurahan Berhasil Di Edit']);
+        Alert::success('Sukses', 'Data Berhasil Diedit', 'Success');
+        return redirect()->route('kelurahan');
     }
 
     public function destroy($id)
     {
         $kelurahan = Kelurahan::findOrFail($id)->delete();
-        return redirect('kelurahan')
-                ->with(['message'=>'Data Kelurahan Berhasil Di Hapus']);
+        Alert::success('Sukses', 'Data Berhasil Dihapus', 'Success');
+        return redirect('kelurahan');
     }
 }

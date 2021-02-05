@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="form-group col-lg-6">
                         <label for="id_kota">Nama Kota</label>
-                        <select name="id_kota" id="id_kota" class="form-control" required>
+                        <select name="id_kota" id="id_kota" class="form-control">
                             @foreach ($kota as $data)
                             <option value="{{$data->id}}">{{$data->nama_kota}}</option> 
                             @endforeach
@@ -20,11 +20,17 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="kode_kecamatan" class="control-label">Kode Kecamatan</label>
-                        <input type="text" name="kode_kecamatan" id="kode_kecamatan" class="form-control" required>
+                        <input type="text" name="kode_kecamatan" id="kode_kecamatan" class="form-control @error('kode_kecamatan') is-invalid @enderror" value="{{ old('kode_kecamatan')}}" autofocus>
+                        @error('kode_kecamatan')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="nama_kecamatan" class="control-label">Nama Kecamatan</label>
-                        <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control" required>
+                        <input type="text" name="nama_kecamatan" id="nama_kecamatan" class="form-control @error('nama_kecamatan') is-invalid @enderror" value="{{ old('nama_kecamatan')}}">
+                        @error('nama_kecamatan')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="row">

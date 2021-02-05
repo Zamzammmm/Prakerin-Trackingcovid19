@@ -11,6 +11,6 @@ class Laporan extends Model
     protected $table = "laporans";
 
     public function rw(){
-        return $this->belongsTo(Rw::class);
+        return $this->belongsTo(Rw::class,'id_rw');
     }
 }

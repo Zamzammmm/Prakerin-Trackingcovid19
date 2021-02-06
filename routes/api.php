@@ -37,3 +37,19 @@ Route::get('indonesia', [ApiController::class, 'indonesia']);
 // Per Provinsi
 Route::get('provinsiapi', [ApiController::class, 'provinsi_index']);
 Route::get('provinsiapi/{id}', [ApiController::class, 'showprovinsi']);
+
+// Per Kota
+Route::get('kotaapi', [ApiController::class, 'kota_index']);
+Route::get('kotaapi/{id}', [ApiController::class, 'showkota']);
+
+// Per Kecamatan
+Route::get('kecamatanapi', [ApiController::class, 'kecamatan_index']);
+Route::get('kecamatanapi/{id}', [ApiController::class, 'showkecamatan']);
+
+// Per Kelurahan
+Route::get('kelurahanapi', [ApiController::class, 'kelurahan_index']);
+Route::get('kelurahanapi/{id}', [ApiController::class, 'showkelurahan']);
+
+// Per Rw
+Route::get('rwapi', [ApiController::class, 'rw_index']);
+Route::get('rwapi/{id}', [ApiController::class, 'showrw']);

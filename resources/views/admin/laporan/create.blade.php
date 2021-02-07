@@ -20,7 +20,7 @@
                         </select>
                     </div>
                     <div class="form-group col-lg-6">
-                        <label for="id_kota">Nama Kota</label>
+                        <label for="id_kota">Nama Kota / Kabupaten</label>
                         <select name="id_kota" id="id_kota" class="form-control">
                             <option selected disabled>-- Pilih Kota -- </option>
                         </select>

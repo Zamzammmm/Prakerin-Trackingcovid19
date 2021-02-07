@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
 use App\Models\Provinsi;
@@ -15,6 +16,30 @@ use App\Models\Laporan;
 
 class ApiController extends Controller
 {
+    public function dataGlobal()
+    {
+    	$http =  Http::get('https://api.kawalcorona.com/')->json();
+    	$data = [];
+    	foreach ($http as $key => $value) {
+    		$raw = $value['attributes'];
+    		$res = [
+    			'Nama Negara' => $raw['Country_Region'],
+    			'Jumlah Positif' => $raw['Confirmed'],
+    			'Jumlah Meninggal' => $raw['Deaths'],
+    			'Jumlah Sembuh' => $raw['Recovered']
+    		];
+    		array_push($data, $res);
+    	}
+
+    	$rest = [
+    		'success' => true,
+    		'data' => $data,
+    		'message' => 'Data Kasus Global Ditampilkan'
+    	];
+
+    	return response()->json($rest, 200);
+    }
+
     public function indonesia()
     {
         $hariini = Carbon::now()->format('d-m-y'); 
@@ -461,5 +486,4 @@ class ApiController extends Controller
         
         return response()->json($rest, 200);
     }
-
 }

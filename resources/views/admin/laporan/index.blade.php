@@ -1,5 +1,21 @@
 @extends('layouts.backend')
-
+@section('active')
+<div class="content-header">
+    <div class="container-fluid">
+    <div class="row mb-2">
+        <div class="col-sm-6">
+        <h1 class="m-0">Laporan</h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+        <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item active">Laporan v1</li>
+        </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+</div>
+@endsection
 @section('content')
 
 <div class="container">
@@ -17,7 +33,7 @@
                 <thead>
                     <tr>
                         <th width="10px">No</th>
-                        <th><center>Lokasi Korban</center></th>
+                        <th><center>Lokasi</center></th>
                         <th>Rw</th>
                         <th>Jumlah Positif</th>
                         <th>Jumlah Sembuh</th>

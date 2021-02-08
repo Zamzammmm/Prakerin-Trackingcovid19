@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Carbon;
 use App\Models\Provinsi;
 use App\Models\Kota;
@@ -16,32 +16,9 @@ use App\Models\Laporan;
 
 class ApiController extends Controller
 {
-    public function dataGlobal()
-    {
-    	$http =  Http::get('https://api.kawalcorona.com/')->json();
-    	$data = [];
-    	foreach ($http as $key => $value) {
-    		$raw = $value['attributes'];
-    		$res = [
-    			'Nama Negara' => $raw['Country_Region'],
-    			'Jumlah Positif' => $raw['Confirmed'],
-    			'Jumlah Meninggal' => $raw['Deaths'],
-    			'Jumlah Sembuh' => $raw['Recovered']
-    		];
-    		array_push($data, $res);
-    	}
-
-    	$rest = [
-    		'success' => true,
-    		'data' => $data,
-    		'message' => 'Data Kasus Global Ditampilkan'
-    	];
-
-    	return response()->json($rest, 200);
-    }
-
     public function indonesia()
     {
+        // Data Indonesia
         $hariini = Carbon::now()->format('d-m-y'); 
     	$data_skrg = DB::table('laporans')
                     ->select(DB::raw('SUM(jumlah_positif) as Jumlah_Positif'), 
@@ -55,7 +32,7 @@ class ApiController extends Controller
                              DB::raw('SUM(jumlah_sembuh) as Jumlah_Sembuh'), 
                              DB::raw('SUM(jumlah_meninggal) as Jumlah_Meninggal'))
     				->get();
-    	$rest = [
+    	$hasil = [
     		'success' => true,
     		'data' => [
                 'hari_ini' => $data_skrg, 
@@ -63,10 +40,11 @@ class ApiController extends Controller
             ],
     		'message' => 'Data Kasus Seluruh Indonesia Ditampilkan'
     	];
-    	return response()->json($rest, 200);
+    	return response()->json($hasil, 200);
     }
     public function provinsi_index()
     {
+        // Per Provinsi
         $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                 ->select(DB::raw('provinsis.id'),
@@ -99,7 +77,7 @@ class ApiController extends Controller
                 ->groupBy('provinsis.nama_provinsi')
             ->get();
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [ 
                 'Hari Ini' =>[$data_skrg],
@@ -107,7 +85,7 @@ class ApiController extends Controller
             ],
             'message' => 'Data Kasus Provinsi Ditampilkan'
         ];
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function showprovinsi($id)
@@ -149,7 +127,7 @@ class ApiController extends Controller
             'jumlah_meninggal' =>$data->sum('jumlah_meninggal'),
         ];
         
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [
                 'Hari Ini' => $data_skrg,
@@ -158,11 +136,12 @@ class ApiController extends Controller
             'message' => 'Data Kasus Provinsi Ditampilkan'
         ];
         
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function kota_index()
     {
+         // Per Kota
         $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kotas.id'),
@@ -193,7 +172,7 @@ class ApiController extends Controller
                     ->groupby('kotas.id')
                     ->get();
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [ 
             'Hari Ini' =>[$data_skrg],
@@ -201,7 +180,7 @@ class ApiController extends Controller
             ],
             'message' => 'Data Kasus Kota Ditampilkan'
         ];
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function showkota($id)
@@ -237,7 +216,7 @@ class ApiController extends Controller
             'jumlah_meninggal' =>$data->sum('jumlah_meninggal'),
         ];
         
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [
                 'Hari Ini' => $data_skrg,
@@ -246,11 +225,12 @@ class ApiController extends Controller
             'message' => 'Data Kasus Kota Ditampilkan'
         ];
         
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function kecamatan_index()
     {
+         // Per Kecamatan
         $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kecamatans.id'),
@@ -279,7 +259,7 @@ class ApiController extends Controller
                     ->groupby('kecamatans.id')
                     ->get();
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [ 
             'Hari Ini' =>[$data_skrg],
@@ -287,7 +267,7 @@ class ApiController extends Controller
             ],
             'message' => 'Data Kasus Kecamatan Ditampilkan'
         ];
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function showkecamatan($id)
@@ -321,7 +301,7 @@ class ApiController extends Controller
             'jumlah_meninggal' =>$data->sum('jumlah_meninggal'),
         ];
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [
                 'Hari Ini' => $data_skrg,
@@ -330,11 +310,12 @@ class ApiController extends Controller
             'message' => 'Data Kasus Kecamatan Ditampilkan'
         ];
         
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function kelurahan_index()
     {
+         // Per Kelurahan
         $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kelurahans.id'),
@@ -361,7 +342,7 @@ class ApiController extends Controller
                     ->groupby('kelurahans.id')
                     ->get();
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [ 
             'Hari Ini' =>[$data_skrg],
@@ -369,7 +350,7 @@ class ApiController extends Controller
             ],
             'message' => 'Data Kasus Kelurahan Ditampilkan'
         ];
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function showkelurahan($id)
@@ -400,7 +381,7 @@ class ApiController extends Controller
             'jumlah_meninggal' =>$data->sum('jumlah_meninggal'),
         ];
         
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [
                 'Hari Ini' => $data_skrg,
@@ -409,11 +390,12 @@ class ApiController extends Controller
             'message' => 'Data Kasus Kelurahan Ditampilkan'
         ];
         
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function rw_index()
     {
+         // Per Rw
         $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('rws.id'),
@@ -438,7 +420,7 @@ class ApiController extends Controller
                     ->groupby('rws.id')
                     ->get();
 
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [ 
             'Hari Ini' =>[$data_skrg],
@@ -446,7 +428,7 @@ class ApiController extends Controller
             ],
             'message' => 'Data Kasus Rw Ditampilkan'
         ];
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
     }
 
     public function showrw($id)
@@ -475,7 +457,7 @@ class ApiController extends Controller
             'jumlah_sembuh' =>$data->sum('jumlah_sembuh'),
             'jumlah_meninggal' =>$data->sum('jumlah_meninggal'),
         ];
-        $rest = [
+        $hasil = [
             'status' => 200,
             'data' => [
                 'Hari Ini' => $data_skrg,
@@ -484,6 +466,33 @@ class ApiController extends Controller
             'message' => 'Data Kasus Rw Ditampilkan'
         ];
         
-        return response()->json($rest, 200);
+        return response()->json($hasil, 200);
+    }
+
+    public function global()
+    {
+        // DATA GLOBAL MENGGUNAKAN HTTP CLIENT
+        $url =  Http::get('https://api.kawalcorona.com/')->json();
+        $data = [];
+        foreach($url as $key => $isi)
+        {
+            $dataarray = $isi['attributes'];
+            $isidata = [
+                'OBJECTID' => $dataarray['OBJECTID'],
+                'Country_Region' => $dataarray['Country_Region'],
+                'Confirmed' => $dataarray['Confirmed'],
+                'Deaths' => $dataarray['Deaths'],
+                'Recovered' => $dataarray['Recovered'] 
+            ];
+            array_push($data, $isidata);
+        }
+
+        $hasil = [
+            'success' => true,
+            'data' => $data,
+            'message' => 'Success'
+        ];
+
+    	return response()->json($hasil, 200);
     }
 }

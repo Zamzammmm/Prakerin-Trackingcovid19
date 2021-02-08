@@ -55,4 +55,4 @@ Route::get('rwapi', [ApiController::class, 'rw_index']);
 Route::get('rwapi/{id}', [ApiController::class, 'showrw']);
 
 // Global
-Route::get('global', [ApiController::class, 'dataGlobal']);
+Route::get('global', [ApiController::class, 'global']);

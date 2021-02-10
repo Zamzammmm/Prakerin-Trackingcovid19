@@ -1,4 +1,3 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="#">TrackingCovid by SmkAssalaam</a>.</strong>
-    All rights reserved.
+    <strong>Website ini dibuat oleh saya sendiri, <a href="https://github.com/Zamzammmm">TrackingCovid by Zamzam Ubaidilah</a>.</strong>
 </footer>

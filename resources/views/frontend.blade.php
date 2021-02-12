@@ -10,7 +10,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{asset('frontend/assets/img/logo.png')}}" rel="icon">
+  <link href="{{asset('frontend/assets/img/icon.png')}}" rel="icon">
   <link href="{{asset('frontend/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -45,10 +45,6 @@
         $sembuh = json_decode($datasembuh, TRUE);
         $datameninggal = file_get_contents("https://api.kawalcorona.com/meninggal");
         $meninggal = json_decode($datameninggal, TRUE);
-        $dataid = file_get_contents("https://api.kawalcorona.com/indonesia");
-        $id = json_decode($dataid, TRUE);
-        $dataidprovinsi = file_get_contents("https://api.kawalcorona.com/indonesia/provinsi");
-        $idprovinsi = json_decode($dataidprovinsi, TRUE);
         $datadunia= file_get_contents("https://api.kawalcorona.com/");
         $dunia = json_decode($datadunia, TRUE);
     ?>
@@ -57,7 +53,7 @@
   @include('component.header')
   <!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
+  <!-- ======= Count ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
@@ -66,12 +62,9 @@
           <h2>Coronavirus Global & Indonesia Live Data</h2>
         </div>  
       </div>
-      <div class="text-center">
-        <a href="#about" class="btn-get-started scrollto">Get Started</a>
-      </div>
       
       <div class="row icon-boxes">
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+        <div class="col-lg-3 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
           <div class="icon-box">
             <div class="icon"> 
               <img src="{{asset('frontend/assets/img/positif.png')}}" width="50" height="50" alt="Positif">
@@ -82,7 +75,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+        <div class="col-lg-3 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
           <div class="icon-box">
             <div class="icon"> 
               <img src="{{asset('frontend/assets/img/sembuh.png')}}" width="50" height="50" alt="Positif">
@@ -93,7 +86,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+        <div class="col-lg-3 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="400">
           <div class="icon-box">
             <div class="icon"> 
               <img src="{{asset('frontend/assets/img/meninggal.png')}}" width="50" height="50" alt="Positif">
@@ -104,19 +97,23 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
+        <div class="col-lg-3 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="500">
           <div class="icon-box">
             <div class="icon"> 
               <img src="{{asset('frontend/assets/img/indonesia.png')}}" width="50" height="50" alt="Positif">
             </div>
             <h4 class="title"><a href="">INDONESIA</a></h4>
-            <span data-toggle="counter-up"><?php echo $id[0]['positif'] ?></span>&nbsp; POSITIF, <span data-toggle="counter-up"><?php echo $id[0]['sembuh'] ?></span> SEMBUH, <span data-toggle="counter-up"><?php echo $id[0]['meninggal'] ?></span> MENINGGAL
+            <span data-toggle="counter-up">{{number_format($jumlah_positif)}}</span>&nbsp; POSITIF,<br>
+            <span data-toggle="counter-up">{{number_format($jumlah_sembuh)}}</span> SEMBUH, <br>
+            <span data-toggle="counter-up"> {{number_format($jumlah_meninggal)}}</span> MENINGGAL. 
           </div>
         </div>
-
-      </div>
+      </div><br>
+      <div class="col text-center">
+            <h6><p>Update terakhir : {{ $tanggal }}</p></h6>
+        </div> 
     </div>
-  </section><!-- End Hero -->
+  </section><!-- End Count -->
 
   <!-- ======= Main ======= -->
   @include('component.main')

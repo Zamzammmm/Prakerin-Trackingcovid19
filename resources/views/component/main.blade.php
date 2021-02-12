@@ -1,17 +1,20 @@
 <main id="main">
 
     <!-- ======= Provinsi ======= -->
-    <section id="about" class="about">
+    <section id="provinsi" class="provinsi">
       <div class="container">
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Data Kasus Indonesia</h2>
+        </div>
         <div class="row content">
           <div class="col-sm">
             <div class="card">
               <div class="card-header">
-                <h3>Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi</h3>
+                <h5>Data Kasus Coronavirus di Indonesia Berdasarkan Provinsi</h5>
               </div>
               <div class="card-body">
                 <div style="height:600px;overflow:auto;margin-right:15px;">
-                  <table class="table table-striped"  fixed-header>
+                  <table class="table table-bordered" fixed-header>
                     <thead>
                       <tr>
                         <th scope="col">No</th>
@@ -25,15 +28,63 @@
                       @php
                         $no = 1; 
                       @endphp
+                    
+                        @foreach($data as $dt)
+                      <tr>
+                        <th scope="row">{{$no++}}</th>
+                        <td>{{$dt->nama_provinsi}}</td>
+                        <td>{{number_format($dt->jumlah_positif)}}</td>
+                        <td>{{number_format($dt->jumlah_sembuh)}}</td>
+                        <td>{{number_format($dt->jumlah_meninggal)}}</td>
+                      </tr>
+                    </tbody>
+                      @endforeach
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End provinsi -->
+
+    <!-- ======= Global ======= -->
+    <section id="global" class="global">
+      <div class="container">
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Data Kasus Global</h2>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <div class="card">
+              <div class="card-header">
+                <h5>Kasus Coronavirus Global</h5>
+              </div>
+              <div class="card-body">
+                <div style="height:600px;overflow:auto;margin-right:15px;">
+                  <table class="table table-striped" fixed-header>
+                    <thead>
+                      <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Negara</th>
+                        <th scope="col">Positif</th>
+                        <th scope="col">Sembuh</th>
+                        <th scope="col">Meninggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      @php
+                        $no = 1; 
+                      @endphp
                       <?php
-                        for ($i= 0; $i <= 33; $i++){
+                        for ($i= 0; $i <= 191; $i++){
                       ?>
                       <tr>
                         <td> <?php echo $i+1 ?></td>
-                        <td> <?php echo $idprovinsi[$i]['attributes']['Provinsi'] ?></td>
-                        <td> <?php echo $idprovinsi[$i]['attributes']['Kasus_Posi'] ?></td>
-                        <td> <?php echo $idprovinsi[$i]['attributes']['Kasus_Semb'] ?></td>
-                        <td> <?php echo $idprovinsi[$i]['attributes']['Kasus_Meni'] ?></td>
+                        <td> <?php echo $dunia[$i]['attributes']['Country_Region'] ?></td>
+                        <td> <?php echo number_format($dunia[$i]['attributes']['Confirmed']) ?></td>
+                        <td><?php echo number_format($dunia[$i]['attributes']['Recovered'])?></td>
+                        <td><?php echo number_format($dunia[$i]['attributes']['Deaths'])?></td>
                       </tr>
                       <?php } ?>
                     </tbody>
@@ -43,102 +94,65 @@
             </div>
           </div>
         </div>
-
       </div>
-    </section><!-- End provinsi -->
-
-    <!-- ======= Global ======= -->
-    <div class="container">
-      
-      <div class="row">
-        <div class="col-sm">
-          <div class="card">
-            <div class="card-header">
-              <h3>Kasus Coronavirus Global</h3>
-            </div>
-            <div class="card-body">
-              <div style="height:600px;overflow:auto;margin-right:15px;">
-                <table class="table table-striped" fixed-header>
-                  <thead>
-                    <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">Negara</th>
-                    <th scope="col">Positif</th>
-                    <th scope="col">Sembuh</th>
-                    <th scope="col">Meninggal</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    @php
-                      $no = 1; 
-                    @endphp
-                    <?php
-                      for ($i= 0; $i <= 191; $i++){
-                    ?>
-                    <tr>
-                      <td> <?php echo $i+1 ?></td>
-                      <td> <?php echo $dunia[$i]['attributes']['Country_Region'] ?></td>
-                      <td> <?php echo number_format($dunia[$i]['attributes']['Confirmed']) ?></td>
-                      <td><?php echo number_format($dunia[$i]['attributes']['Recovered'])?></td>
-                      <td><?php echo number_format($dunia[$i]['attributes']['Deaths'])?></td>
-                    </tr>
-                    <?php } ?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <br>
+    </section>
     <!-- End Global -->
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 col-xl-6">
-          <a href="https://www.unicef.org/indonesia/id/coronavirus">
-            <div class="card bg-success">
-              <div class="card-body">
-                <h4 class="card-title" style="text-decoration:none; color:white">Novel coronavirus (COVID-19): Hal-hal yang perlu Anda ketahui</h4>
-                <p class="card-text"  style="text-decoration:none; color:white">Unicef Indonesia</p>
-              </div>
-            </div>
-          </a>
+
+     <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Layanan</h2>
+          <h3>Berikut <span>Layanan</span></h3>
+          <p>Beberapa lembaga mengenai tentang coronavirus</p>
         </div>
 
-        <div class="form-group col-lg-6">
-          <a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona">
-            <div class="card bg-secondary">
-              <div class="card-body">
-                <h4 class="card-title" style="text-decoration:none">Daftar 100 Rumah Sakit Rujukan Penanganan Virus Corona</h4>
-                <p class="card-text" style="text-decoration:none">Kompas</p>
-              </div>
-            </a>
+        <div class="row">
+          <div class="col-lg-3  d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-out" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="https://www.unicef.org/indonesia/id/coronavirus">
+                Novel Coronavirus (COVID-19)</a></h4>
+              <p>Hal-hal yang perlu anda ketahui</p><br>
+              <p>Unicef</p>
+            </div>
           </div>
-      </div>
-      <div class="form-group col-lg-6" style="margin-top:20px">
-          <a href="https://infeksiemerging.kemkes.go.id/">
-            <div class="card bg-danger">
-              <div class="card-body">
-                <h4 class="card-title"style="text-decoration:none">Media Informasi Resmi Penyakit Infeksi Emerging</h4>
-                <p class="card-text" style="text-decoration:none">Kementrian Kesehatan</p>
-              </div>
+
+          <div class="col-lg-3  d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-out" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="https://www.kompas.com/tren/read/2020/03/03/183500265/infografik-daftar-100-rumah-sakit-rujukan-penanganan-virus-corona">
+                Daftar Rumah Sakit</a></h4>
+              <p>Daftar 100 rumah sakit di Indoneis rujukan penanganan virus corona</p><br>
+              <p>Kompas</p>
             </div>
-          </a>
+          </div>
+
+          <div class="col-lg-3  d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-out" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="https://infeksiemerging.kemkes.go.id/">
+                Media Informasi</a></h4>
+              <p>Media informasi resmi penyakit Infeksi Emerging</p><br>
+              <p>Kementrian Kesehatan</p>
+            </div>
+          </div>
+
+          <div class="col-lg-3 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-out" data-aos-delay="400">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-first-aid"></i></div>
+              <h4><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
+                Coronavirus Disease(COVID-19)</a></h4>
+              <p>Coronavirus Disease advice for the public</p><br>
+              <p>WHO</p>
+            </div>
+          </div>
         </div>
 
-        <div class="form-group col-lg-6" style="margin-top:20px">
-          <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public">
-            <div class="card bg-warning">
-              <div class="card-body">
-                <h4 class="card-title" style="text-decoration:none">Coronavirus Disease (COVID-19) Advice for The Public</h4>
-                <p class="card-text"style="text-decoration:none">WHO</p>
-              </div>
-            </div>
-          </a>
-        </div>
-    </div>
+      </div>
+    </section><!-- End Services Section -->
+
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
@@ -148,9 +162,9 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <div>
+        {{-- <div>
           <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-        </div>
+        </div> --}}
 
         <div class="row mt-5">
 

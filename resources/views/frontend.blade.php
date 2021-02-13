@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Kawal Corona - Coronavirus Global & Indonesia Live Data</title>
+  <title>TrackingCovid-19</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -58,8 +58,8 @@
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
       <div class="row justify-content-center">
         <div class="col-xl-7 col-lg-9 text-center">
-          <h1>KAWAL CORONA</h1>
-          <h2>Coronavirus Global & Indonesia Live Data</h2>
+          <h1>Tracking Covid-19</h1>
+          <h2>Data Coronavirus Indonesia dan Global Terupdate</h2>
         </div>  
       </div>
       

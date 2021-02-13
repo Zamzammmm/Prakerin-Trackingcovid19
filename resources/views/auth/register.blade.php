@@ -22,7 +22,7 @@
 
   <div class="card">
     <div class="card-body register-card-body">
-      <p class="login-box-msg">Register a new membership</p>
+      <p class="login-box-msg">Daftar sebagai akun baru</p>
 
       <form action="{{route('register')}}" method="post">
         @csrf
@@ -90,7 +90,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center">
+      {{-- <div class="social-auth-links text-center">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i>
@@ -100,14 +100,14 @@
           <i class="fab fa-google-plus mr-2"></i>
           Sign up using Google+
         </a>
-      </div>
+      </div> --}}
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
 </div>
-<div class="text-center" style="margin-top: 15px">
+{{-- <div class="text-center" style="margin-top: 15px">
   You already have an account <a href="/login">Please Login</a>
-</div>
+</div> --}}
 <!-- /.register-box -->
 
 <!-- jQuery -->

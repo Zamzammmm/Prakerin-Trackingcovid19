@@ -17,12 +17,12 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Log</b>in</a>
+    <a href="#"><b>Tracking</b>Covid-19</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Masukkan Email & Password Anda</p>
 
       <form action="{{route('login')}}" method="post">
         @csrf
@@ -69,7 +69,7 @@
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
+      {{-- <div class="social-auth-links text-center mb-3">
         <p>- OR -</p>
         <a href="#" class="btn btn-block btn-primary">
           <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
@@ -77,7 +77,7 @@
         <a href="#" class="btn btn-block btn-danger">
           <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
-      </div>
+      </div> --}}
       <!-- /.social-auth-links -->
 
       {{-- <p class="mb-1">
@@ -91,7 +91,7 @@
   </div>
 </div>
 <div class="text-center" style="margin-top: 15px">
-    Don't have an account yet? <a href="/register">Please Register</a>
+  Belum memiliki akun? <a href="/register">Daftar Disini</a>
 </div>
 <!-- /.login-box -->
 

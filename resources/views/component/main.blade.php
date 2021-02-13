@@ -102,8 +102,8 @@
     <section id="services" class="services">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Layanan</h2>
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Pelayanan</h2>
           <h3>Berikut <span>Layanan</span></h3>
           <p>Beberapa lembaga mengenai tentang coronavirus</p>
         </div>
@@ -157,9 +157,9 @@
     <section id="contact" class="contact">
       <div class="container" data-aos="fade-up">
 
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="section-title" data-aos="zoom-out">
+          <h2>Kontak</h2>
+          <p>Kontak Kami</p>
         </div>
 
         {{-- <div>
@@ -172,20 +172,20 @@
             <div class="info">
               <div class="address">
                 <i class="icofont-google-map"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h4>Alamat Kami:</h4>
+                <p>Jl. Situ Tarate</p>
               </div>
 
               <div class="email">
                 <i class="icofont-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
+                <h4>Email Kami:</h4>
+                <p>info@smkassalaambandung.sch.id</p>
               </div>
 
               <div class="phone">
                 <i class="icofont-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
+                <h4>Nomor Kami:</h4>
+                <p>081 809 330 622</p>
               </div>
 
             </div>
@@ -218,9 +218,9 @@
               </div>
 
               <div class="mb-3">
-                <div class="loading">Loading</div>
+                <div class="loading">Memuat</div>
                 <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+                <div class="sent-message">Pesan Anda telah dikirim. Terima kasih!</div>
               </div>
               <div class="text-center"><button type="submit">Send Message</button></div>
             </form>

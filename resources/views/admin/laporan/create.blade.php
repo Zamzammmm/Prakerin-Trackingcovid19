@@ -4,7 +4,7 @@
 <div class="container mt-3">
     <div class="card">
         <div class="card-header bg-primary">
-            Form Tambah Data Laporan
+            Form Tambah Data Kasus Local
         </div>
         <div class="card-body">
             <form action="{{route('laporan.store')}}" method="POST">

@@ -4,7 +4,7 @@
 <div class="container mt-3">
     <div class="card">
         <div class="card-header bg-primary">
-            Form Lihat Data Laporan
+            Form Lihat Data Kasus Local
         </div>
         <div class="card-body">
                 <div class="row">

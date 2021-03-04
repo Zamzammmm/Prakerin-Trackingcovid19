@@ -81,12 +81,12 @@
               <li class="nav-item">
                 <a href="{{route('laporan')}}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Laporan</p>
+                  <p>Kasus Local</p>
                 </a>
               </li>
             </ul>
           </li>
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-globe"></i>
               <p>
@@ -103,7 +103,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li> --}}
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

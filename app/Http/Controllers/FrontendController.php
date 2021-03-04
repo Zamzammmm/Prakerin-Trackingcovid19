@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 use DB;
 use App\Http\Models\Provinsi;
@@ -32,9 +33,11 @@ class FrontendController extends Controller
                     'laporans.jumlah_sembuh','laporans.jumlah_meninggal')
                     ->join('laporans','rws.id','=','laporans.id_rw')
                     ->sum('laporans.jumlah_meninggal');
+        $global = file_get_contents('https://api.kawalcorona.com/positif');
+        $posglobal = json_decode($global, TRUE);
 
         // Date
-        $tanggal = Carbon::now()->format('D d-M-Y');
+        $tanggal = Carbon::now()->format('D d-M-Y h:i:s');
 
         // Table Provinsi
         $data = DB::table('provinsis')
@@ -48,8 +51,12 @@ class FrontendController extends Controller
                           DB::raw('sum(laporans.jumlah_sembuh) as jumlah_sembuh'),
                           DB::raw('sum(laporans.jumlah_meninggal) as jumlah_meninggal'))
                   ->groupBy('nama_provinsi')->orderBy('nama_provinsi','ASC')
-                  ->get();            
-        return view('frontend',compact('jumlah_positif','jumlah_sembuh','jumlah_meninggal','tanggal' ,'data'));
+                  ->get();     
+                  
+        // Table Global
+        $datadunia= file_get_contents("https://api.kawalcorona.com/");
+        $dunia = json_decode($datadunia, TRUE);       
+        return view('frontend',compact('jumlah_positif','jumlah_sembuh','jumlah_meninggal','posglobal','tanggal' ,'data', 'dunia'));
     }
 
     /**

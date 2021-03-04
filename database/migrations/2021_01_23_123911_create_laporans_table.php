@@ -16,9 +16,9 @@ class CreateLaporansTable extends Migration
         Schema::create('laporans', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('id_rw')->unsigned();
-            $table->string('jumlah_positif');
-            $table->string('jumlah_sembuh');
-            $table->string('jumlah_meninggal');
+            $table->integer('jumlah_positif');
+            $table->integer('jumlah_sembuh');
+            $table->integer('jumlah_meninggal');
             $table->date('tanggal');
             $table->timestamps();
 

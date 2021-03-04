@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Carbon;
 use App\Models\Provinsi;
 use App\Models\Kota;
 use App\Models\Kecamatan;
@@ -19,13 +18,11 @@ class ApiController extends Controller
     public function indonesia()
     {
         // Data Indonesia
-        $hariini = Carbon::now()->format('d-m-y'); 
     	$data_skrg = DB::table('laporans')
                     ->select(DB::raw('SUM(jumlah_positif) as Jumlah_Positif'), 
                              DB::raw('SUM(jumlah_sembuh) as Jumlah_Sembuh'), 
                              DB::raw('SUM(jumlah_meninggal) as Jumlah_Meninggal'),
                              DB::raw('MAX(tanggal) as tanggal'))
-	    			->whereDay('tanggal', '=' , $hariini)
 	    			->get();
         $data = DB::table('laporans')
                     ->select(DB::raw('SUM(jumlah_positif) as Jumlah_Positif'), 
@@ -45,7 +42,6 @@ class ApiController extends Controller
     public function provinsi_index()
     {
         // Per Provinsi
-        $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                 ->select(DB::raw('provinsis.id'),
                          DB::raw('provinsis.nama_provinsi'),
@@ -53,7 +49,6 @@ class ApiController extends Controller
                          DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
                          DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
                          DB::raw('MAX(tanggal) as tanggal'))
-                         ->whereDay('tanggal', '=' , $hariini)
                 ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                 ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
                 ->join('kecamatans' ,'kelurahans.id_kecamatan', '=', 'kecamatans.id')
@@ -142,7 +137,6 @@ class ApiController extends Controller
     public function kota_index()
     {
          // Per Kota
-        $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kotas.id'),
                              DB::raw('kotas.nama_kota'),
@@ -150,7 +144,6 @@ class ApiController extends Controller
                              DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
                              DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
                              DB::raw('MAX(tanggal) as tanggal'))
-                             ->whereDay('tanggal', '=' , $hariini)
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kecamatan', '=', 'kecamatans.id')
@@ -231,7 +224,6 @@ class ApiController extends Controller
     public function kecamatan_index()
     {
          // Per Kecamatan
-        $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kecamatans.id'),
                              DB::raw('kecamatans.nama_kecamatan'),
@@ -239,7 +231,6 @@ class ApiController extends Controller
                              DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
                              DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
                              DB::raw('MAX(tanggal) as tanggal'))
-                             ->whereDay('tanggal', '=' , $hariini)
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kecamatan', '=', 'kecamatans.id')
@@ -316,7 +307,6 @@ class ApiController extends Controller
     public function kelurahan_index()
     {
          // Per Kelurahan
-        $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('kelurahans.id'),
                              DB::raw('kelurahans.nama_kelurahan'),
@@ -324,7 +314,6 @@ class ApiController extends Controller
                              DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
                              DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
                              DB::raw('MAX(tanggal) as tanggal'))
-                             ->whereDay('tanggal', '=' , $hariini)
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
                     ->whereDate('laporans.tanggal', date('Y-m-d'))
@@ -396,7 +385,6 @@ class ApiController extends Controller
     public function rw_index()
     {
          // Per Rw
-        $hariini = Carbon::now()->format('d-m-y'); 
         $data_skrg = DB::table('laporans')
                     ->select(DB::raw('rws.id'),
                              DB::raw('rws.nama'),
@@ -404,7 +392,6 @@ class ApiController extends Controller
                              DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
                              DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
                              DB::raw('MAX(tanggal) as tanggal'))
-                             ->whereDay('tanggal', '=' , $hariini)
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->whereDate('laporans.tanggal', date('Y-m-d'))
                     ->groupby('rws.id')

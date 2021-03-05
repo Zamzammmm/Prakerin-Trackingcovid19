@@ -67,7 +67,7 @@ class ApiController extends Controller
                 ->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
                 ->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
                 ->groupBy('provinsis.nama_provinsi')
-            ->get();
+                ->get();
 
         $hasil = [
             'status' => 200,

@@ -66,7 +66,7 @@ class ApiController extends Controller
                 ->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
                 ->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
                 ->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
-                ->groupBy('provinsis.nama_provinsi')
+                ->groupBy('provinsis.id')
                 ->get();
 
         $hasil = [
@@ -103,7 +103,7 @@ class ApiController extends Controller
                 ->join('kotas', 'kotas.id', '=', 'kecamatans.id_kota')
                 ->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
                 ->where('provinsis.id', $id)
-                ->groupBy('provinsis.nama_provinsi')
+                ->groupBy('provinsis.id')
                 ->get();
             
         $data_skrg = [

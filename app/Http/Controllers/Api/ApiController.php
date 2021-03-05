@@ -18,9 +18,9 @@ class ApiController extends Controller
     public function indonesia()
     {
         // Data Indonesia
-        $positif = tracking::get('jumlah_positif')->sum('jumlah_positif');
-        $sembuh = tracking::get('jumlah_sembuh')->sum('jumlah_sembuh');
-        $meninggal = tracking::get()->sum('jumlah_meninggal');
+        $positif = Laporan::get('jumlah_positif')->sum('jumlah_positif');
+        $sembuh = Laporan::get('jumlah_sembuh')->sum('jumlah_sembuh');
+        $meninggal = Laporan::get()->sum('jumlah_meninggal');
         $hasil = [
             'status' => 200,
             

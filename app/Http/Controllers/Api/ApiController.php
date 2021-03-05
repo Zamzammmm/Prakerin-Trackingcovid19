@@ -226,7 +226,6 @@ class ApiController extends Controller
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
                     ->join('kecamatans' ,'kelurahans.id_kecamatan', '=', 'kecamatans.id')
-                    ->whereDate('laporans.tanggal', date('Y-m-d'))
                     ->groupby('kecamatans.id')
                     ->get();
 
@@ -306,7 +305,6 @@ class ApiController extends Controller
                              DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'))
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->join('kelurahans' ,'rws.id_kelurahan', '=', 'kelurahans.id')
-                    ->whereDate('laporans.tanggal', date('Y-m-d'))
                     ->groupby('kelurahans.id')
                     ->get();
 
@@ -379,8 +377,7 @@ class ApiController extends Controller
                              DB::raw('rws.nama'),
                              DB::raw('SUM(laporans.jumlah_positif) as jumlah_positif'),
                              DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
-                             DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
-                             DB::raw('MAX(tanggal) as tanggal'))
+                             DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'))
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->groupby('rws.id')
                     ->get();
@@ -412,7 +409,6 @@ class ApiController extends Controller
                     ->select('jumlah_positif', 'jumlah_sembuh', 'jumlah_meninggal')
                     ->join('rws' ,'laporans.id_rw', '=', 'rws.id')
                     ->where('rws.id', $id)
-                    ->where('laporans.tanggal', date('Y-m-d'))
                     ->get();
 
         $data = DB::table('laporans')

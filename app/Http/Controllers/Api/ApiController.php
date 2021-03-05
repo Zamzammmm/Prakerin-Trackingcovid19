@@ -18,25 +18,24 @@ class ApiController extends Controller
     public function indonesia()
     {
         // Data Indonesia
-    	$data_skrg = DB::table('laporans')
-                    ->select(DB::raw('SUM(jumlah_positif) as Jumlah_Positif'), 
-                             DB::raw('SUM(jumlah_sembuh) as Jumlah_Sembuh'), 
-                             DB::raw('SUM(jumlah_meninggal) as Jumlah_Meninggal'))
-	    			->get();
-        $data = DB::table('laporans')
-                    ->select(DB::raw('SUM(jumlah_positif) as Jumlah_Positif'), 
-                             DB::raw('SUM(jumlah_sembuh) as Jumlah_Sembuh'), 
-                             DB::raw('SUM(jumlah_meninggal) as Jumlah_Meninggal'))
-    				->get();
-    	$hasil = [
-    		'success' => true,
-    		'data' => [
-                'hari_ini' => $data_skrg, 
-                'Total' => $data
+        $positif = tracking::get('jumlah_positif')->sum('jumlah_positif');
+        $sembuh = tracking::get('jumlah_sembuh')->sum('jumlah_sembuh');
+        $meninggal = tracking::get()->sum('jumlah_meninggal');
+        $hasil = [
+            'status' => 200,
+            
+            'data' => [ 
+            [
+                    'name' => 'Indonesia',
+                    'jumlah_positif' => "$positif",
+                    'jumlah_sembuh' => "$sembuh",
+                    'jumlah_meninggal' => "$meninggal",
+                    ]
             ],
-    		'message' => 'Data Kasus Seluruh Indonesia Ditampilkan'
-    	];
-    	return response()->json($hasil, 200);
+                
+            'message' => 'Data Kasus Indonesia Ditampilkan'
+        ];
+        return response()->json($hasil, 200);
     }
     public function provinsi_index()
     {

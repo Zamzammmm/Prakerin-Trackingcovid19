@@ -6,7 +6,7 @@
             <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
               <div class="count-box">
                 <i class="bi bi-plus"></i>
-                <span data-toggle="counter-up">{{ $jumlah_positif }}</span>
+                <span data-toggle="counter-up">{{number_format($jumlah_positif)}}</span>
                 <p>Jumlah Positif Indonesia</p>
               </div>
             </div>
@@ -14,7 +14,7 @@
             <div class="col-lg-3 col-md-6 mt-5 mt-md-0">
               <div class="count-box">
                 <i class="bi bi-emoji-smile"></i>
-                <span data-toggle="counter-up">{{ $jumlah_sembuh }}</span>
+                <span data-toggle="counter-up">{{number_format($jumlah_sembuh)}}</span>
                 <p>Jumlah Sembuh Indonesia</p>
               </div>
             </div>
@@ -22,7 +22,7 @@
             <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
               <div class="count-box">
                 <i class="bi bi-emoji-frown"></i>
-                <span data-toggle="counter-up">{{ $jumlah_meninggal }}</span>
+                <span data-toggle="counter-up">{{number_format($jumlah_meninggal)}}</span>
                 <p>Jumlah Meninggal Indonesia</p>
               </div>
             </div>

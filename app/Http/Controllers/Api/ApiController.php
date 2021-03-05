@@ -104,7 +104,7 @@ class ApiController extends Controller
                 ->join('provinsis', 'provinsis.id', '=', 'kotas.id_provinsi')
                 ->where('provinsis.id', $id)
                 ->groupBy('provinsis.nama_provinsi')
-            ->get();
+                ->get();
             
         $data_skrg = [
             'jumlah_positif' =>$data_skrg->sum('jumlah_positif'),

@@ -29,7 +29,7 @@
 
             <div class="col-lg-3 col-md-6 mt-5 mt-lg-0">
               <div class="count-box">
-                <i class="bi bi-flag"></i>
+                <i class="bi bi-globe"></i>
                 <span data-toggle="counter-up"><?php echo $posglobal['value']; ?></span>
                 <p>Jumlah Total Positif di Dunia</p>
               </div>

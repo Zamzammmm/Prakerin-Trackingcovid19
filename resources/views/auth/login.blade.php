@@ -90,9 +90,9 @@
     <!-- /.login-card-body -->
   </div>
 </div>
-<div class="text-center" style="margin-top: 15px">
+{{-- <div class="text-center" style="margin-top: 15px">
   Belum memiliki akun? <a href="/register">Daftar Disini</a>
-</div>
+</div> --}}
 <!-- /.login-box -->
 
 <!-- jQuery -->

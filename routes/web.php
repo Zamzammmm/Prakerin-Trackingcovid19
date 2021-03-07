@@ -27,7 +27,9 @@ Route::get('/', function () {
 // Route FrontEnd
 Route::resource('/', FrontendController::class);
 
-Auth::routes();
+// Register
+Auth::routes(['register' => false,]);
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -37,6 +38,7 @@ class ApiController extends Controller
         ];
         return response()->json($hasil, 200);
     }
+
     public function provinsi_index()
     {
         // Per Provinsi
@@ -451,8 +453,8 @@ class ApiController extends Controller
                 'OBJECTID' => $dataarray['OBJECTID'],
                 'Country_Region' => $dataarray['Country_Region'],
                 'Confirmed' => $dataarray['Confirmed'],
-                'Deaths' => $dataarray['Deaths'],
-                'Recovered' => $dataarray['Recovered'] 
+                'Recovered' => $dataarray['Recovered'],
+                'Deaths' => $dataarray['Deaths']
             ];
             array_push($data, $isidata);
         }
@@ -464,5 +466,52 @@ class ApiController extends Controller
         ];
 
     	return response()->json($hasil, 200);
+    }
+
+    public function globalpositif()
+    {
+        // GuzzleHttp\Client
+        $client = new Client(); 
+        $url = 'https://api.kawalcorona.com/positif';
+        $positif = json_decode($client->request('GET', $url)->getBody());
+        $hasil= [
+            'status' => 200,
+            'data' => [$positif
+        ],
+            'message' => 'Data Kasus Positif Ditampilkan',
+        ];
+        return response()->json($hasil,200);
+    }
+
+    public function globalsembuh()
+    {
+        // GuzzleHttp\Client
+        $client = new Client(); 
+        $url = 'https://api.kawalcorona.com/sembuh';
+        $sembuh = json_decode($client->request('GET', $url)->getBody());
+        $hasil= [
+            'status' => 200,
+            'data' => [$sembuh
+        ],
+            'message' => 'Data Kasus Sembuh Ditampilkan',
+        ];
+        return response()->json($hasil,200);
+    
+    }
+
+    public function globalmeninggal()
+    {
+        // GuzzleHttp\Client
+        $client = new Client(); 
+        $url = 'https://api.kawalcorona.com/meninggal';
+        $meninggal = json_decode($client->request('GET', $url)->getBody());
+        $hasil= [
+            'status' => 200,
+            'data' => [$meninggal
+        ],
+            'message' => 'Data Kasus Meninggal Ditampilkan',
+        ];
+        return response()->json($hasil,200);
+    
     }
 }

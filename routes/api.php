@@ -56,3 +56,6 @@ Route::get('rwapi/{id}', [ApiController::class, 'showrw']);
 
 // Global
 Route::get('global', [ApiController::class, 'global']);
+Route::get('positif', [ApiController::class, 'globalpositif']);
+Route::get('sembuh', [ApiController::class, 'globalsembuh']);
+Route::get('meninggal', [ApiController::class, 'globalmeninggal']);

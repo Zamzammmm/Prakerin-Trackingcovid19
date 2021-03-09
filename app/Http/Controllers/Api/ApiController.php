@@ -60,8 +60,8 @@ class ApiController extends Controller
                 ->select(DB::raw('provinsis.id'),
                          DB::raw('provinsis.nama_provinsi as provinsi'), 
                          DB::raw('SUM(laporans.jumlah_positif) as jumlah_positif'), 
-                         DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_peninggal'),
-                         DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh')) 
+                         DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
+                         DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal')) 
                 ->join('rws', 'rws.id', '=', 'laporans.id_rw')
                 ->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
                 ->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')
@@ -93,8 +93,8 @@ class ApiController extends Controller
         $data = DB::table('laporans')
                 ->select(DB::raw('provinsis.nama_provinsi as provinsi'), 
                          DB::raw('SUM(laporans.jumlah_positif) as jumlah_positif'), 
-                         DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal'),
-                         DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh')) 
+                         DB::raw('SUM(laporans.jumlah_sembuh) as jumlah_sembuh'),
+                         DB::raw('SUM(laporans.jumlah_meninggal) as jumlah_meninggal')) 
                 ->join('rws', 'rws.id', '=', 'laporans.id_rw')
                 ->join('kelurahans', 'kelurahans.id', '=', 'rws.id_kelurahan')
                 ->join('kecamatans', 'kecamatans.id', '=', 'kelurahans.id_kecamatan')

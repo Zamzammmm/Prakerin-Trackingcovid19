@@ -72,7 +72,7 @@ class ApiController extends Controller
 
         $hasil = [
             'status' => 200,
-            'data' => $data,
+            'data' => [$data_skrg,$data],
             'message' => 'Data Kasus Provinsi Ditampilkan'
         ];
         return response()->json($hasil, 200);

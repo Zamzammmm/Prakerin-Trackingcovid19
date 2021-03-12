@@ -353,7 +353,7 @@
                 <div class="email">
                 <i class="bi bi-envelope"></i>
                   <h4>Email Kami:</h4>
-                  <p>info@smkassalaambandung.sch.id</p>
+                  <p>zamzamubaidilah32@gmail.com</p>
                 </div>
 
                 <div class="phone">
@@ -363,66 +363,66 @@
                 </div>
               </div>
             </div>
-
+            
             <div class="col-lg-8 mt-5 mt-lg-0">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
+              <div class="alert alert-success alert-dismissible fade show d-none my-alert" role="alert">
+                <strong>Terima Kasih!</strong> Pesan Anda Sudah Kami Terima.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form name="trackingcovid19" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <input
-                      type="text"
-                      name="name"
-                      class="form-control"
-                      id="name"
-                      placeholder="Your Name"
-                      required
-                    />
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required/>
                   </div>
+                  
                   <div class="col-md-6 form-group mt-3 mt-md-0">
-                    <input
-                      type="email"
-                      class="form-control"
-                      name="email"
-                      id="email"
-                      placeholder="Your Email"
-                      required
-                    />
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required/>
                   </div>
                 </div>
+
                 <div class="form-group mt-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="subject"
-                    id="subject"
-                    placeholder="Subject"
-                    required
-                  />
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required/>
                 </div>
+
                 <div class="form-group mt-3">
-                  <textarea
-                    class="form-control"
-                    name="message"
-                    rows="5"
-                    placeholder="Message"
-                    required
-                  ></textarea>
+                  <textarea class="form-control" name="message" rows="5"  placeholder="Message" required></textarea>
                 </div>
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">
-                    Your message has been sent. Thank you!
-                  </div>
-                </div>
+                
                 <div class="text-center">
-                  <button type="submit">Send Message</button>
+                  <button class="btn btn-primary btn-kirim" type="submit">Send Message</button>
+                  <button class="btn btn-primary btn-loading d-none" type="button" disabled>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Loading...
+                  </button>
                 </div>
               </form>
+              <script>
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbz1mxBZ0GvPyP5JKqvkvLZU9FgetVoH_B1h0FFqf0bEwPHUOvekvofFqxwJyPjxgwR3/exec'
+                const form = document.forms['trackingcovid19'];
+                const btnKirim = document.querySelector('.btn-kirim');
+                const btnLoading = document.querySelector('.btn-loading');
+                const myAlert = document.querySelector('.my-alert');
+
+                form.addEventListener('submit', e => {
+                  e.preventDefault();
+                  // ketika tombol submit diklik
+                  // tampilkan tombol loading, hilangkan tombol kirim
+                  btnLoading.classList.toggle('d-none');
+                  btnKirim.classList.toggle('d-none');
+                  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                    .then(response => {
+                      // tampilkan tombol kirim, hilangkan tombol loading
+                      btnLoading.classList.toggle('d-none');
+                      btnKirim.classList.toggle('d-none');
+                      // tampilkan alert
+                      myAlert.classList.toggle('d-none');
+                      // reset formnya
+                      form.reset();
+                      console.log('Success!', response)
+                      })
+                    .catch(error => console.error('Error!', error.message))
+                })
+              </script>
             </div>
           </div>
         </div>

@@ -34,7 +34,6 @@
               <i class="nav-icon fas fa-home"></i>
               <p>
                 Dashboard
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
           </li>

@@ -61,29 +61,32 @@
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="jumlah_positif" class="control-label">Jumlah Positif</label>
-                        <input type="text" name="jumlah_positif" id="jumlah_positif" class="form-control @error('jumlah_positif') is-invalid @enderror" value="{{ old('jumlah_positif')}}" autofocus>
+                        <input type="number" name="jumlah_positif" id="jumlah_positif" class="form-control @error('jumlah_positif') is-invalid @enderror" value="{{ old('jumlah_positif')}}" autofocus>
                         @error('jumlah_positif')
                         <div class="invalid_feedback" style="color:red">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="jumlah_sembuh" class="control-label">Jumlah Sembuh</label>
-                        <input type="text" name="jumlah_sembuh" id="jumlah_sembuh" class="form-control @error('jumlah_sembuh') is-invalid @enderror" value="{{ old('jumlah_sembuh')}}">
+                        <input type="number" name="jumlah_sembuh" id="jumlah_sembuh" class="form-control @error('jumlah_sembuh') is-invalid @enderror" value="{{ old('jumlah_sembuh')}}">
                         @error('jumlah_sembuh')
                         <div class="invalid_feedback" style="color:red">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group col-lg-6">
                         <label for="jumlah_meninggal" class="control-label">Jumlah Meninggal</label>
-                        <input type="text" name="jumlah_meninggal" id="jumlah_meninggal" class="form-control @error('jumlah_meninggal') is-invalid @enderror" value="{{ old('jumlah_meninggal')}}">
+                        <input type="number" name="jumlah_meninggal" id="jumlah_meninggal" class="form-control @error('jumlah_meninggal') is-invalid @enderror" value="{{ old('jumlah_meninggal')}}">
                         @error('jumlah_meninggal')
                         <div class="invalid_feedback" style="color:red">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="form-group col-lg-6">
+                    {{-- <div class="form-group col-lg-6">
                         <label for="tanggal" class="control-label">Tanggal</label>
-                        <input type="date" name="tanggal" id="tanggal" class="form-control">
-                    </div>
+                        <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal')}}">
+                        @error('jumlah_meninggal')
+                        <div class="invalid_feedback" style="color:red">{{ $message }}</div>
+                        @enderror
+                    </div> --}}
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">

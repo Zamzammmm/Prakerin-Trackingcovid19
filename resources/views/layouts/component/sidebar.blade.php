@@ -5,7 +5,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('assets/dist/img/DPT.png')}}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{asset('assets/dist/img/avatar5.png')}}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{Auth::user()->name}}</a>
@@ -49,60 +49,60 @@
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('provinsi')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-map-marker text-info nav-icon"></i>
                   <p>Provinsi</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('kota')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Kota</p>
+                  <i class="fas fa-map-marker text-info nav-icon"></i>
+                  <p>Kota / Kabupaten</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('kecamatan')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-map-marker text-info nav-icon"></i>
                   <p>Kecamatan</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('kelurahan')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-map-marker text-info nav-icon"></i>
                   <p>Kelurahan</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('rw')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="fas fa-map-marker text-info nav-icon"></i>
                   <p>Rw</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{route('laporan')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
+                  <i class="far fa-circle text-info nav-icon"></i>
                   <p>Kasus Local</p>
                 </a>
               </li>
             </ul>
           </li>
-          {{-- <li class="nav-item">
+          <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-globe"></i>
+              <i class="nav-icon fas fa-file"></i>
               <p>
-                Global
+                Data Laporan
                 <i class="fas fa-angle-left right"></i>
                 <span class="badge badge-info right">1</span>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{('negara')}}" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Negara</p>
+                <a href="{{url('report-provinsi')}}" class="nav-link">
+                  <i class="far fa-circle text-info nav-icon"></i>
+                  <p>Report Provinsi</p>
                 </a>
               </li>
             </ul>
-          </li> --}}
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

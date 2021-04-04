@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+@section('title')
+Kasus Local
+@endsection
 @section('active')
 <div class="content-header">
     <div class="container-fluid">
@@ -27,6 +30,9 @@
 
             <a href="{{route('laporan.create')}}" class="btn btn-success mb-3"><i class="fa fa-plus-circle"></i>
                 Kasus Local
+            </a>
+            <a href="{{route('pdfreport')}}" class="btn btn-info mb-3"><i class="fa fa-file-pdf"></i>
+                Export PDF
             </a>
 
             <table class="table table-bordered" id="datatable">

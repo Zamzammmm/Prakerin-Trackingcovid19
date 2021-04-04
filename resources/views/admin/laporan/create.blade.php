@@ -80,13 +80,13 @@
                         <div class="invalid_feedback" style="color:red">{{ $message }}</div>
                         @enderror
                     </div>
-                    {{-- <div class="form-group col-lg-6">
+                    <div class="form-group col-lg-6">
                         <label for="tanggal" class="control-label">Tanggal</label>
                         <input type="date" name="tanggal" id="tanggal" class="form-control @error('tanggal') is-invalid @enderror" value="{{ old('tanggal')}}">
                         @error('jumlah_meninggal')
                         <div class="invalid_feedback" style="color:red">{{ $message }}</div>
                         @enderror
-                    </div> --}}
+                    </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-lg-4">

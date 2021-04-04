@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Backend | Dashboard</title>
+  <title>Tracking Covid-19 | @yield('title')</title>
   <!-- Favicons -->
   <link href="{{asset('assets/dist/img/AdminLTELogo.png')}}" rel="icon">
 

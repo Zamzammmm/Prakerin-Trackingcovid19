@@ -1,4 +1,7 @@
 @extends('layouts.backend')
+@section('title')
+Provinsi
+@endsection
 @section('active')
 <div class="content-header">
     <div class="container-fluid">

@@ -1,14 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\KelurahanController;
 use App\Http\Controllers\RwController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\FrontendController;
-use App\Http\Controllers\DashboardController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +98,8 @@ Route::get('/get_kota/{id}',[LaporanController::class,'get_kota']);
 Route::get('/get_kecamatan/{id}',[LaporanController::class,'get_kecamatan']);
 Route::get('/get_kelurahan/{id}',[LaporanController::class,'get_kelurahan']);
 Route::get('/get_rw/{id}',[LaporanController::class,'get_rw']);
+
+// report
+Route::get('report-provinsi', [ReportController::class, 'getReportProvinsi']);
+Route::post('report-provinsi', [ReportController::class, 'ReportProvinsi']);
+Route::get('pdfreport', [ReportController::class, 'Report'])->name('pdfreport')->middleware('auth');

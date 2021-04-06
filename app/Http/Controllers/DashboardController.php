@@ -27,7 +27,7 @@ class DashboardController extends Controller
                     'laporans.jumlah_sembuh','laporans.jumlah_meninggal')
                     ->join('laporans','rws.id','=','laporans.id_rw')
                     ->sum('laporans.jumlah_meninggal');
-        $tanggal = Carbon::now()->isoFormat('dddd, D MMMM Y hh:mm:s');
+        $tanggal = Carbon::now()->isoFormat('dddd, D MMMM Y hh:mm:ss');
         return view('home',compact('jumlah_positif','jumlah_sembuh','jumlah_meninggal','tanggal'));
     }
 

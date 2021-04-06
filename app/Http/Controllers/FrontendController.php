@@ -37,7 +37,7 @@ class FrontendController extends Controller
         $posglobal = json_decode($global, TRUE);
 
         // Date
-        $tanggal = Carbon::now()->isoFormat('dddd, D MMMM Y hh:mm:s');
+        $tanggal = Carbon::now()->isoFormat('dddd, D MMMM Y hh:mm:ss');
 
         // Table Provinsi
         $data = DB::table('provinsis')

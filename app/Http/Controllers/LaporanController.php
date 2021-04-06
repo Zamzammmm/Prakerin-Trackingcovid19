@@ -39,7 +39,6 @@ class LaporanController extends Controller
             'jumlah_positif' => 'required|numeric|min:1',
             'jumlah_sembuh' => "required|numeric|min:1|max:$positif",
             'jumlah_meninggal' => "required||numeric|min:1|max:$meninggal",
-            'tanggal' => 'required',
         ], [
             'jumlah_positif.required' => 'Data tidak boleh kosong',
             'jumlah_positif.min' => 'Jumlah positif tidak boleh kurang dari 1',
@@ -49,13 +48,12 @@ class LaporanController extends Controller
             'jumlah_meninggal.required' => 'Data tidak boleh kosong',
             'jumlah_meninggal.min' => 'Jumlah meninggal tidak boleh kurang dari 1',
             'jumlah_meninggal.max' => 'Jumlah meninggal tidak boleh melebihi jumlah Positif dan Sembuh ',
-            'tanggal.required' => 'Data tidak boleh kosong',
         ]);
         $laporan = new Laporan();
         $laporan->jumlah_positif = $request->jumlah_positif;
         $laporan->jumlah_sembuh = $request->jumlah_sembuh;
         $laporan->jumlah_meninggal = $request->jumlah_meninggal;
-        $laporan->tanggal = $request->tanggal;
+        $laporan->tanggal = date('Y-m-d');
         $laporan->id_rw = $request->id_rw;
         $laporan->save();
         Alert::success('Sukses', 'Data Berhasil Disimpan', 'Success');
@@ -104,7 +102,7 @@ class LaporanController extends Controller
         $laporan->jumlah_positif = $request->jumlah_positif;
         $laporan->jumlah_sembuh = $request->jumlah_sembuh;
         $laporan->jumlah_meninggal = $request->jumlah_meninggal;
-        $laporan->tanggal = $request->tanggal;
+        $laporan->tanggal = date('Y-m-d');
         $laporan->id_rw = $request->id_rw;
         $laporan->save();
         Alert::success('Sukses', 'Data Berhasil Diedit', 'Success');

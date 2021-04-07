@@ -11,7 +11,7 @@
     <div class="container-fluid">
             <div class="col">
                 <div class="row">
-                    <h1>Data Kasus Local</h1>
+                    <center><h1><b>Data Kasus Indonesia</b></h1></center>
                 </div>
             </div>
             <div class="card mb-4">

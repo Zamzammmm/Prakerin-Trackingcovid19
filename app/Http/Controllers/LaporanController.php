@@ -38,7 +38,7 @@ class LaporanController extends Controller
         $request->validate([
             'jumlah_positif' => 'required|numeric|min:1',
             'jumlah_sembuh' => "required|numeric|min:1|max:$positif",
-            'jumlah_meninggal' => "required||numeric|min:1|max:$meninggal",
+            'jumlah_meninggal' => "required|numeric|min:1|max:$meninggal",
         ], [
             'jumlah_positif.required' => 'Data tidak boleh kosong',
             'jumlah_positif.min' => 'Jumlah positif tidak boleh kurang dari 1',
